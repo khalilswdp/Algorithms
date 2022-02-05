@@ -29,12 +29,15 @@ def getAncestorNodes(rootNode, targetNode):
             return True
 
         didFindLeft = helper(currNode.left)
-        didFindRight = helper(currNode.right)
+        didFindRight = False
+        if not didFindLeft:
+            didFindRight = helper(currNode.right)
 
         if didFindLeft or didFindRight:
-            print(f"{currNode.value}, ", end =" ")
+            print(f"{currNode.value}, ", end=" ")
 
         return didFindLeft or didFindRight
+
     helper(rootNode)
     print("")
 
